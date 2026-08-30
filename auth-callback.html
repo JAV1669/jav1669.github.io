@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polyverba Account Confirmed</title>
+</head>
+
+<body style="
+  font-family: Arial, sans-serif;
+  background:#081426;
+  color:white;
+  text-align:center;
+  padding:50px 20px;
+">
+
+  <h1>Email Confirmed</h1>
+
+  <p>Your Polyverba account has been verified.</p>
+
+  <p>
+    <a
+      href="polyverba://login-callback"
+      style="
+        display:inline-block;
+        padding:16px 28px;
+        background:#18b7ff;
+        color:white;
+        text-decoration:none;
+        border-radius:10px;
+        font-weight:bold;
+      "
+    >
+      Open Polyverba
+    </a>
+  </p>
+
+  <p>You can close this page after Polyverba opens.</p>
+
+  <script>
+    setTimeout(function () {
+      window.location.href = "polyverba://login-callback";
+    }, 750);
+  </script>
+
+</body>
+</html>
