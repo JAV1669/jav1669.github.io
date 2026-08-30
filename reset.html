@@ -1,32 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Polyverba Password Reset</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+      background: #081426;
+      color: white;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 18px 30px;
+      background: #18b7ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #status {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #bbbbbb;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Polyverba Password Reset</h1>
 
-  <p>Your password reset request is ready.</p>
+  <h1>Polyverba</h1>
 
-  <button
-    style="font-size:22px; padding:20px;"
-    onclick="openPolyverba()">
+  <h2>Password Reset</h2>
+
+  <p>Your password reset request has been verified.</p>
+
+  <p>Tap below to continue in Polyverba.</p>
+
+  <a id="openApp"
+     class="button"
+     href="polyverba://reset-password">
     Open Polyverba
-  </button>
+  </a>
 
-  <p>Callback page loaded successfully.</p>
+  <p id="status">Preparing secure recovery link...</p>
 
   <script>
-    function openPolyverba() {
-      const query = window.location.search || "";
-      const hash = window.location.hash || "";
+    const query = window.location.search || "";
+    const hash = window.location.hash || "";
 
-      window.location.href =
-        "polyverba://reset-password" + query + hash;
-    }
+    const appUrl =
+      "polyverba://reset-password" + query + hash;
+
+    document.getElementById("openApp")
+      .setAttribute("href", appUrl);
+
+    document.getElementById("status").textContent =
+      (query || hash)
+        ? "Recovery information received."
+        : "No recovery information was received.";
   </script>
+
 </body>
 </html>
